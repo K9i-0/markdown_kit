@@ -4,3 +4,10 @@ build/
 coverage/
 pubspec.lock
 doc/api/
+
+# Promo video media and render outputs
+tool/promo/raw/
+tool/promo/audio/
+tool/promo/out/
+tool/promo/*.mp4
+tool/promo/*.work/
