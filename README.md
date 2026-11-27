@@ -1,5 +1,9 @@
 # markdown_kit
 
+[![pub package](https://img.shields.io/pub/v/markdown_kit.svg)](https://pub.dev/packages/markdown_kit)
+[![CI](https://github.com/K9i-0/markdown_kit/actions/workflows/check_pr.yml/badge.svg)](https://github.com/K9i-0/markdown_kit/actions/workflows/check_pr.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Markdown for AI chat in Flutter: text that arrives token by token, in a
 scrolling list, that people still want to select and copy.
 
