@@ -2,8 +2,9 @@ name: markdown_kit
 description: >-
   Markdown for AI chat in Flutter. Holds half-written syntax while a reply
   streams, and keeps text selection across blocks while the list scrolls.
-version: 0.1.0
-publish_to: none
+version: 1.0.0
+repository: https://github.com/K9i-0/markdown_kit
+issue_tracker: https://github.com/K9i-0/markdown_kit/issues
 
 screenshots:
   - description: A reply streaming into a chat, then selected across a list, a code block and a table.
