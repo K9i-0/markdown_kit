@@ -898,7 +898,7 @@ class MarkdownSelectionScopeState extends State<MarkdownSelectionScope>
       // starts at the nearest caret, as in a browser or an editor.
       if ((widget.canStartSelectionAt != null &&
               !widget.canStartSelectionAt!(global)) ||
-          !controller.isOnSelectableRow(global)) {
+          !_isOnSelectableRow(global)) {
         _mouseDragMode = _MouseDragMode.none;
         clearSelection();
         return;
@@ -939,6 +939,28 @@ class MarkdownSelectionScopeState extends State<MarkdownSelectionScope>
         _mouseDragMode = _MouseDragMode.block;
       }
     }
+  }
+
+  /// Whether [global] hits rendered text, or sits beside it: at the height of
+  /// a mounted surface but left or right of its glyphs.
+  ///
+  /// A mouse press starts a selection from these places too (the end of a
+  /// short line, a list marker, the padding next to a paragraph), snapping to
+  /// the nearest text. The gaps above and below blocks stay outside.
+  bool _isOnSelectableRow(Offset global) {
+    for (final surface in controller.mountedSurfaces) {
+      if (surface.hitsTextAtGlobal(global)) {
+        return true;
+      }
+      final bounds = surface.globalBounds;
+      if (bounds != null &&
+          surface.textLength > 0 &&
+          global.dy >= bounds.top &&
+          global.dy < bounds.bottom) {
+        return true;
+      }
+    }
+    return false;
   }
 
   void _onDesktopDragStart(TapDragStartDetails details) {
